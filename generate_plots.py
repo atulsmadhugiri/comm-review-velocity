@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import date
 
 sns.set_theme(style="darkgrid")
-plt.figure(figsize=(10, 5))
+plt.figure(figsize=(24, 12))
 def ms_to_days(x): return x/(60*60*24)
 
 
