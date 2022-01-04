@@ -1,0 +1,31 @@
+name: Generate report
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get GitHub Commit Data
+        run: python3 get_github_commit_data.py
+
+      - name: Get Phabricator Diff Data
+        env:
+          PHABRICATOR_API_TOKEN: ${{secrets.PHABRICATOR_API_TOKEN}}
+        run: python3 get_phabricator_diff_data.py
+
+      - name: Generate CSV
+        run: python3 generate_table.py
+
+      - name: git add table.csv
+        run: git add table.csv
+        
+      - name: git commit -m "$(date)"
+        run: git commit -m "$(date)"
+      
+      - name: git push
+        run: git push
