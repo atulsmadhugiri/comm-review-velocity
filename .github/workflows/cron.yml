@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: pip3 install pandas
-        run: pip3 install pandas
+      - name: pip3 install pandas && pip3 install matplotlib && pip3 install seaborn
+        run: pip3 install pandas && pip3 install matplotlib && pip3 install seaborn
 
       - name: Get GitHub Commit Data
         run: python3 get_github_commit_data.py
