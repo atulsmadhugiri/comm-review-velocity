@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: sudo apt-get install python3-setuptools
+        run: sudo apt-get install python3-setuptools
+      
       - name: pip3 install pandas && pip3 install matplotlib && pip3 install seaborn
         run: pip3 install pandas && pip3 install matplotlib && pip3 install seaborn
 
