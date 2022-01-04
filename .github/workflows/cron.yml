@@ -24,16 +24,19 @@ jobs:
       - name: Generate CSV
         run: python3 generate_table.py
         
+      - name: Generate boxplot
+        run: python3 generate_plots.py
+        
       - name: Configure Git
         run: |
             git config user.name 'atulsmadhugiri'
             git config user.email 'atulm@berkeley.edu'
             
-      - name: git add table.csv
-        run: git add table.csv
+      - name: git add table.csv && git add boxplot.svg
+        run: git add table.csv && git add boxplot.svg
         
       - name: git commit -m "$(date)"
-        run: git commit -m "$(date)"
+        run: git commit -m "$(date)" || echo "No changes to table or plots"
       
       - name: git push
         run: git push
