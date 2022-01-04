@@ -10,6 +10,7 @@ def ms_to_days(x): return x/(60*60*24)
 
 df = pd.read_csv('table.csv')
 df.set_index('id', inplace=True)
+df = df.reindex(index=df.index[::-1])
 
 df['diff_days'] = (df['arcland'] - df['arcdiff']).apply(ms_to_days)
 
@@ -17,7 +18,6 @@ df['arcdiff'] = df['arcdiff'].apply(date.fromtimestamp)
 df['arcland'] = df['arcland'].apply(date.fromtimestamp)
 
 df['month_year'] = df['arcdiff'].apply(lambda x: x.strftime('%b %Y'))
-df = df.sort_values(by=['month_year'], ascending=False)
 
 boxplot = sns.boxplot(
     x="month_year",
