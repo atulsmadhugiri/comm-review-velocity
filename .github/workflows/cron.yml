@@ -3,6 +3,8 @@ name: Generate report
 on:
   push:
     branches: [main]
+  schedule:
+    - cron:  '0 15,23 * * *'
 
 jobs:
   build:
