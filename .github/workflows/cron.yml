@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+      
+      - name: pip install pandas
+        run: pip install pandas
 
       - name: Get GitHub Commit Data
         run: python3 get_github_commit_data.py
