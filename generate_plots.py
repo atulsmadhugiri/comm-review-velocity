@@ -5,14 +5,14 @@ from datetime import date
 
 sns.set_theme(style="darkgrid")
 plt.figure(figsize=(20, 10))
-def ms_to_days(x): return x/(60*60*24)
+def sec_to_days(x): return x/(60*60*24)
 
 
 df = pd.read_csv('table.csv')
 df.set_index('id', inplace=True)
 df = df.reindex(index=df.index[::-1])
 
-df['diff_days'] = (df['arcland'] - df['arcdiff']).apply(ms_to_days)
+df['diff_days'] = (df['arcland'] - df['arcdiff']).apply(sec_to_days)
 
 df['arcdiff'] = df['arcdiff'].apply(date.fromtimestamp)
 df['arcland'] = df['arcland'].apply(date.fromtimestamp)
