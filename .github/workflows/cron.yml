@@ -34,8 +34,8 @@ jobs:
         
       - name: Configure Git
         run: |
-            git config user.name 'atulsmadhugiri'
-            git config user.email 'atulm@berkeley.edu'
+            git config user.name 'runner'
+            git config user.email 'runner@github.com'
             
       - name: git add table.csv && git add boxplot.svg
         run: git add table.csv && git add boxplot.svg
