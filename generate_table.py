@@ -18,7 +18,7 @@ land_stamp = {}
 for each in gh_data:
     msg = each["commit"]["message"]
     timestamp = parser.parse(each["commit"]["committer"]["date"])
-    if "Differential Revision: " in msg:
+    if "Differential Revision: " in msg and timestamp.year == 2022 or (timestamp.year == 2021 and timestamp.month == 12):
         diff_id = msg.split("Differential Revision: ")[1].split(
             "https://phabricator.ashoat.com/D"
         )[1]
