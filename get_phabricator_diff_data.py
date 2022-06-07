@@ -7,7 +7,7 @@ import os
 def get_diff_data():
     try:
         response = requests.get(
-            url="https://phabricator.ashoat.com/api/differential.query",
+            url="https://phab.comm.dev/api/differential.query",
             params={
                 "api.token": os.getenv("PHABRICATOR_API_TOKEN")
             },

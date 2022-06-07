@@ -18,11 +18,17 @@ land_stamp = {}
 for each in gh_data:
     msg = each["commit"]["message"]
     timestamp = parser.parse(each["commit"]["committer"]["date"])
-    if "Differential Revision: " in msg:
+    if "Differential Revision: " in msg and "https://phabricator.ashoat.com/D" in msg:
         diff_id = msg.split("Differential Revision: ")[1].split(
             "https://phabricator.ashoat.com/D"
         )[1]
         land_stamp[diff_id] = int(timestamp.timestamp())
+    elif "Differential Revision: " in msg and "https://phab.comm.dev/D" in msg:
+        diff_id = msg.split("Differential Revision: ")[1].split(
+            "https://phab.comm.dev/D"
+        )[1]
+        land_stamp[diff_id] = int(timestamp.timestamp())
+
 
 diff_id_series = pd.Series(land_stamp.keys())
 arcdiff_series = pd.Series([diff_stamp[idx] for idx in land_stamp.keys()])
